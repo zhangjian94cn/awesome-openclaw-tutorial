@@ -64,8 +64,8 @@ done|' "$FILE"
 echo -e "${GREEN}   ✓ 修复位置2: 行1084 (基础套装)${NC}"
 
 # 修复3：行1087 - 进阶套装
-sed -i '' '1087s|npx clawhub@latest install scheduler note-sync file-organizer|# 逐个安装\
-for skill in scheduler note-sync file-organizer; do\
+sed -i '' '1087s|npx clawhub@latest install scheduler note-sync file-manager|# 逐个安装\
+for skill in scheduler note-sync file-manager; do\
     npx clawhub@latest install "$skill"\
 done|' "$FILE"
 
@@ -79,7 +79,7 @@ skills=(\
     "web-clipper"\
     "scheduler"\
     "note-sync"\
-    "file-organizer"\
+    "file-manager"\
     "screenshot"\
     "reminder"\
     "batch-processor"\
