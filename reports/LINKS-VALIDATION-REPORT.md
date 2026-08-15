@@ -100,9 +100,9 @@
 | Skills生态 | `docs/skills-ecosystem.md` | ✅ 有效 |
 | 示例代码 | `examples/README.md` | ✅ 有效 |
 | 学习路径 | `LEARNING-PATH.md` | ✅ 有效 |
-| 成本计算器 | `COST-CALCULATOR.md` | ✅ 有效 |
-| 更新日志 | `CHANGELOG.md` | ✅ 有效 |
-| 项目总结 | `PROJECT-SUMMARY.md` | ✅ 有效 |
+| 成本计算器 | `tutorials/COST-CALCULATOR.md` | ✅ 有效 |
+| 更新日志 | `reports/CHANGELOG.md` | ✅ 有效 |
+| 项目总结 | `reports/PROJECT-SUMMARY.md` | ✅ 有效 |
 
 ---
 

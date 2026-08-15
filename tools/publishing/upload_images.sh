@@ -3,8 +3,8 @@
 # 图片下载和上传脚本
 # 从飞书链接下载图片并上传到图床
 
-INPUT_FILE="Openclaw史上最简单教程，小白一键部署.md"
-OUTPUT_FILE="Openclaw史上最简单教程，小白一键部署_新.md"
+INPUT_FILE="tutorials/Openclaw史上最简单教程，小白一键部署.md"
+OUTPUT_FILE="tutorials/Openclaw史上最简单教程，小白一键部署_新.md"
 URL_MAPPING="url_mapping.txt"
 
 # 创建临时目录

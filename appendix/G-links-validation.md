@@ -155,8 +155,8 @@
 | README | README.md | ✅ 存在 | 项目首页 |
 | 首页 | index.md | ✅ 存在 | Jekyll首页 |
 | 学习路径 | LEARNING-PATH.md | ✅ 存在 | 7天学习计划 |
-| 成本计算器 | COST-CALCULATOR.md | ✅ 存在 | 成本估算 |
-| 更新日志 | CHANGELOG.md | ✅ 存在 | 版本历史 |
+| 成本计算器 | tutorials/COST-CALCULATOR.md | ✅ 存在 | 成本估算 |
+| 更新日志 | reports/CHANGELOG.md | ✅ 存在 | 版本历史 |
 | 许可证 | LICENSE | ✅ 存在 | MIT许可 |
 
 ---

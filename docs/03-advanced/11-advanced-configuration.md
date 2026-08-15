@@ -8,9 +8,8 @@
 
 ## 版本基线
 
-- **当前稳定版**：`v2026.4.14`（2026-04-14）
-- **当前预发布版**：`v2026.4.15-beta.1`（2026-04-15）
-- 本章默认按 `v2026.4.14` 写；beta 功能只在“预发布补充”里点到为止
+- **当前稳定版**：`v2026.6.8`（2026-06-16 发布）
+- 本章默认按 `v2026.6.8` 写；历史 beta 内容只在旧案例里保留
 
 ---
 
@@ -128,12 +127,12 @@ openclaw models image-fallbacks add google/gemini-2.5-pro
 
 ### 11.2.3 当前值得注意的 provider 变化
 
-根据 `v2026.4.12` 到 `v2026.4.14` 的官方 release notes：
+根据 `v2026.4.12` 到 `v2026.6.8` 的官方 release notes：
 
 - `v2026.4.12` 新增了**bundled Codex provider**，`codex/gpt-*` 这类模型现在走独立 Codex 路线
 - `v2026.4.12` 新增 **LM Studio provider**，本地 / 自托管 OpenAI-compatible 模型更顺手
-- `v2026.4.14` 增加了对 **`gpt-5.4-pro`** 的前向兼容支持
-- `v2026.4.14` 还修复了大量 Codex、Ollama、embedding provider 的兼容问题
+- `v2026.6.8` 增加了对 **`gpt-5.4-pro`** 的前向兼容支持
+- `v2026.6.8` 还修复了大量 Codex、Ollama、embedding provider 的兼容问题
 
 如果你要做编程工作流，当前更推荐的几个方向：
 
@@ -416,7 +415,7 @@ openclaw approvals allowlist add --agent main "/usr/bin/uname"
 
 ### 11.7.2 本地模型用户的新补充
 
-`v2026.4.15-beta.1` 新增了实验参数：
+历史 `v2026.4.15-beta.1` 里曾新增过一个本地模型实验参数：
 
 ```json
 {
@@ -430,7 +429,7 @@ openclaw approvals allowlist add --agent main "/usr/bin/uname"
 }
 ```
 
-它会在弱本地模型场景下去掉一些重量级默认工具，降低提示词体积。**注意这是 beta 能力**，本章只把它当可选项，不建议你在生产主环境里默认打开。
+它会在弱本地模型场景下去掉一些重量级默认工具，降低提示词体积。**注意这是历史 beta 能力**，在 `v2026.6.8` 环境里请先查官方配置文档和 `openclaw config schema`，不要直接照抄到生产主环境。
 
 ### 11.7.3 本章推荐的检查顺序
 

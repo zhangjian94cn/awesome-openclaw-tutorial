@@ -974,7 +974,8 @@ Error: bindings.0.match: Unrecognized key: "account"
 openclaw doctor
 
 # 如果提示配置访问题，运行自动修复
-openclaw doctor --fix
+openclaw update repair
+openclaw doctor
 
 # 验证配置
 openclaw doctor
@@ -3401,7 +3402,9 @@ Problem:
 - agents.list.1: Unrecognized keys: "compaction", "maxConcurrent"
 - agents.list.2: Unrecognized keys: "compaction", "maxConcurrent"
 - agents.list.3: Unrecognized keys: "compaction", "maxConcurrent"
-Run: openclaw doctor --fix
+Run:
+openclaw update repair
+openclaw doctor
 ```
 **原因**：`agents.list` 中的 Agent 配置包含了只能在 `agents.defaults` 中使用的字段。
 
@@ -3409,7 +3412,8 @@ Run: openclaw doctor --fix
 
 ```bash
 # 方法1：自动修复（推荐）
-openclaw doctor --fix
+openclaw update repair
+openclaw doctor
 
 # 方法2：手动修复
 # 编辑配置文件，将 compaction 和 maxConcurrent 从 agents.list 移到 agents.defaults
@@ -3486,12 +3490,13 @@ Unknown config keys:
 - agents.list[1].maxConcurrent
 ...
 
-Run "openclaw doctor --fix" to remove these keys.
+Run `openclaw update repair` and then `openclaw doctor` to remove these keys.
 ```
 **解决方案**：
 ```bash
 # 运行自动修复
-openclaw doctor --fix
+openclaw update repair
+openclaw doctor
 
 # 验证配置
 openclaw doctor
@@ -3508,11 +3513,12 @@ openclaw gateway status
 # 警告信息
 Config was last written by a newer OpenClaw (2026.2.6-3); 
 current version is 2026.2.1-zh.3.
-Run "openclaw doctor --fix" to apply changes.
+Run `openclaw update repair` and then `openclaw doctor` to apply changes.
 ```
 **说明**：这是正常的版本提示，不影响使用。如果想消除警告：
 ```bash
-openclaw doctor --fix
+openclaw update repair
+openclaw doctor
 ```
 ### 9.1.17.6 配置对比
 
@@ -3895,7 +3901,8 @@ cat ~/.openclaw/openclaw.json | grep -A 5 "agents"
 openclaw doctor
 
 # 自动修复
-openclaw doctor --fix
+openclaw update repair
+openclaw doctor
 ```
 ### 最佳实践
 

@@ -11,7 +11,7 @@ title: 首页
 [![GitHub forks](https://img.shields.io/github/forks/xianyu110/awesome-openclaw-tutorial?style=social)](https://github.com/xianyu110/awesome-openclaw-tutorial)
 [![License](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-v2026.4.14-green.svg)](https://github.com/xianyu110/awesome-openclaw-tutorial)
-[![Status](https://img.shields.io/badge/status-完成-success.svg)](PROJECT-SUMMARY.md)
+[![Status](https://img.shields.io/badge/status-完成-success.svg)](reports/PROJECT-SUMMARY.md)
 [![CSDN](https://img.shields.io/badge/CSDN-博客-c32136?style=for-the-badge&logo=csdn)](https://blog.csdn.net/xianyu120)
 [![Bilibili](https://img.shields.io/badge/Bilibili-B站-fb7299?style=for-the-badge&logo=bilibili)](https://space.bilibili.com/399102586)
 [![微信公众号](https://img.shields.io/badge/微信公众号-MaynorAI-07C160?style=for-the-badge&logo=wechat)](https://upload.may.maynor1024.live/file/1773461955906_qrcode_for_gh_c749803541de_1280.jpg)
@@ -47,15 +47,15 @@ title: 首页
 
 | 你的情况 | 推荐方案 | 为什么 | 开始时间 |
 |---------|---------|------|---------|
-| **完全小白，想最快体验** | [**飞书妙搭**](Openclaw史上最简单教程，小白一键部署.md#1飞书妙搭-openclaw--强烈推荐) ⭐ | **免费** + **1分钟完成** + **每日100万Tokens** | → 立即开始 |
-| **有服务器，想可视化管理** | [**宝塔面板**](Openclaw史上最简单教程，小白一键部署.md#11宝塔面板-openclaw) | **免费插件** + **面板管理** + **一键安装** | → 3分钟搞定 |
-| **企业级，需要高安全性** | [**JVSClaw**](Openclaw史上最简单教程，小白一键部署.md#10jvsclaw阿里云无影) | **14天免费** + **6核12GB** + **端到端加密** | → 需邀请码 |
-| **想用浏览器操控** | [Kimi Claw](Openclaw史上最简单教程，小白一键部署.md#3kimi-openclaw) | **Kimi K2.5** + **浏览器控制** | → 200元/月 |
-| **量化交易/多IM** | [腾讯 WorkBuddy](Openclaw史上最简单教程，小白一键部署.md#4腾讯-openclawworkbuddy) | **桌面端Agent** + **多IM支持** | → 送5000积分 |
-| **macOS原生体验** | [QClaw](Openclaw史上最简单教程，小白一键部署.md#5qclaw) | **腾讯官方桌面客户端** + **全量公测** | → 免费 |
-| **Agent生态丰富** | [扣子 OpenClaw](Openclaw史上最简单教程，小白一键部署.md#2扣子-openclaw) | **1800+Skills** | → 99元/月起 |
+| **完全小白，想最快体验** | [**飞书妙搭**](tutorials/Openclaw史上最简单教程，小白一键部署.md#1飞书妙搭-openclaw--强烈推荐) ⭐ | **免费** + **1分钟完成** + **每日100万Tokens** | → 立即开始 |
+| **有服务器，想可视化管理** | [**宝塔面板**](tutorials/Openclaw史上最简单教程，小白一键部署.md#11宝塔面板-openclaw) | **免费插件** + **面板管理** + **一键安装** | → 3分钟搞定 |
+| **企业级，需要高安全性** | [**JVSClaw**](tutorials/Openclaw史上最简单教程，小白一键部署.md#10jvsclaw阿里云无影) | **14天免费** + **6核12GB** + **端到端加密** | → 需邀请码 |
+| **想用浏览器操控** | [Kimi Claw](tutorials/Openclaw史上最简单教程，小白一键部署.md#3kimi-openclaw) | **Kimi K2.5** + **浏览器控制** | → 200元/月 |
+| **量化交易/多IM** | [腾讯 WorkBuddy](tutorials/Openclaw史上最简单教程，小白一键部署.md#4腾讯-openclawworkbuddy) | **桌面端Agent** + **多IM支持** | → 送5000积分 |
+| **macOS原生体验** | [QClaw](tutorials/Openclaw史上最简单教程，小白一键部署.md#5qclaw) | **腾讯官方桌面客户端** + **全量公测** | → 免费 |
+| **Agent生态丰富** | [扣子 OpenClaw](tutorials/Openclaw史上最简单教程，小白一键部署.md#2扣子-openclaw) | **1800+Skills** | → 99元/月起 |
 
-📖 **[查看完整一键部署教程 →](Openclaw史上最简单教程，小白一键部署.md)**
+📖 **[查看完整一键部署教程 →](tutorials/Openclaw史上最简单教程，小白一键部署.md)**
 
 ---
 

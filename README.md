@@ -6,8 +6,8 @@
 [![GitHub stars](https://img.shields.io/github/stars/xianyu110/awesome-openclaw-tutorial?style=social)](https://github.com/xianyu110/awesome-openclaw-tutorial)
 [![GitHub forks](https://img.shields.io/github/forks/xianyu110/awesome-openclaw-tutorial?style=social)](https://github.com/xianyu110/awesome-openclaw-tutorial)
 [![License](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-v2026.4.14-green.svg)](https://github.com/xianyu110/awesome-openclaw-tutorial)
-[![Status](https://img.shields.io/badge/status-完成-success.svg)](PROJECT-SUMMARY.md)
+[![Version](https://img.shields.io/badge/version-v2026.6.8-green.svg)](https://github.com/xianyu110/awesome-openclaw-tutorial)
+[![Status](https://img.shields.io/badge/status-完成-success.svg)](reports/PROJECT-SUMMARY.md)
 [![CSDN](https://img.shields.io/badge/CSDN-博客-c32136?style=for-the-badge&logo=csdn)](https://blog.csdn.net/xianyu120)
 [![Bilibili](https://img.shields.io/badge/Bilibili-B站-fb7299?style=for-the-badge&logo=bilibili)](https://space.bilibili.com/399102586)
 [![微信公众号](https://img.shields.io/badge/微信公众号-MaynorAI-07C160?style=for-the-badge&logo=wechat)](https://upload.may.maynor1024.live/file/1773461955906_qrcode_for_gh_c749803541de_1280.jpg)
@@ -16,26 +16,37 @@
 
 > 📖 **纸质书《OpenClaw超级个体实操手册》已上市！** 清华大学出版社出版，在开源教程基础上全面重写+逐条验证。🛒 [京东专属购买链接（¥42，原价¥59.8）](https://item.jd.com/14669463.html)
 
-> 🔄 **2026-04-16 更新说明**：本仓库当前按 **OpenClaw v2026.4.14（稳定版）** 校对；`v2026.4.15-beta.1` 仅作预发布参考。第 `10~15` 章已按官方当前主线重写，优先覆盖 `infer / models / cron / tasks / Task Flow / webhooks / Active Memory / Memory Wiki / 媒体能力`。
+> 🔄 **2026-06-18 更新说明**：本仓库当前按 **OpenClaw v2026.6.8（稳定版，2026-06-16 发布）** 校对；第 `1/2/5/8/10~15` 章已同步新版主线，优先覆盖 `infer / models / cron / tasks / Task Flow / webhooks / Active Memory / Memory Wiki / 媒体能力 / 多渠道消息 / usage footer`。
+
+## 🔗 MaynorAI 高星项目导航
+
+- [awesome-openclaw-tutorial](https://github.com/xianyu110/awesome-openclaw-tutorial)：OpenClaw 中文教程合集，从安装配置到实战案例和常见坑位一站式梳理。
+- [clawbot](https://github.com/xianyu110/clawbot)：Clawbot 完整配置指南，帮助开发者把 Claude Code 中转环境快速跑起来。
+- [gpt-codex](https://github.com/xianyu110/gpt-codex)：面向国内开发者的 OpenAI Codex 教程网站，覆盖使用入口、配置和实战案例。
+- [gemini-nanobanana-pro](https://github.com/xianyu110/gemini-nanobanana-pro)：基于 Gemini 图像模型的 AI 图片生成与编辑 Web 应用，适合快速体验文生图和改图流程。
+- [awesome-chatgpt-project](https://github.com/xianyu110/awesome-chatgpt-project)：ChatGPT 注册、项目资源和高效使用技巧整理，帮助新用户快速入门 AI 工具。
+- [awesome-claudcode-tutorial](https://github.com/xianyu110/awesome-claudcode-tutorial)：Claude Code 中文教程，从基础使用到团队级开发工作流。
+- [awesome-gptimage2](https://github.com/xianyu110/awesome-gptimage2)：GPT Image 2 中文资料站，聚焦模型能力、提示词框架和商业图片生成场景。
+- [CodexPlusPlus](https://github.com/xianyu110/CodexPlusPlus)：Codex App 外部增强启动器，通过 DevTools 协议注入增强能力，不修改原始安装文件。
 
 ## 📌 本教程与 OpenClaw 最新版差异说明
 
 为了避免你把旧章节当成最新版官方教程，先看这 4 点：
 
-- **当前教程基线**：本仓库目前按 `v2026.4.14` 稳定版校对；如果 GitHub Releases 出现更高版本，请以官方 Release Notes 和官方文档为准
-- **已优先更新的章节**：`README` 与第 `10~15` 章已按 `2026.4+` 当前主线重写；第 `1/2/5/7` 章已补新版入口
+- **当前教程基线**：本仓库目前按 `v2026.6.8` 稳定版校对；如果 GitHub Releases 或 npm 出现更高版本，请以官方 Release Notes 和官方文档为准
+- **已优先更新的章节**：`README` 与第 `1/2/5/8/10~15` 章已按 `2026.6+` 当前主线修订；第 `7` 章仍保留 2026.4 主线补充
 - **仍含历史内容的章节**：部分旧案例、旧截图、旧 Skill 名称、旧配置片段仍保留在其他章节里，适合作为思路参考，不建议直接复制执行
-- **当前应优先使用的官方主线**：`openclaw onboard`、`openclaw models auth login --provider <provider>`、`openclaw infer ...`、`Task Flow`、`Webhooks`、`ComfyUI`
+- **当前应优先使用的官方主线**：`openclaw onboard`、`openclaw models auth login --provider <provider>`、`openclaw infer ...`、`Task Flow`、`Webhooks`、`ComfyUI`、`/usage`
 
 | 类型 | 本教程当前状态 | 阅读建议 |
 |------|----------------|----------|
-| 版本基线 | 已对齐 `v2026.4.14` | 新手优先按这个版本跑通 |
-| 预发布能力 | `v2026.4.15-beta.1` 仅作参考 | 想尝鲜再看，不要默认照抄 |
+| 版本基线 | 已对齐 `v2026.6.8` | 新手优先按这个版本跑通 |
+| 2026.6 新能力 | 多渠道消息、模型目录、usage footer、搜索默认策略 | 可作为升级后的重点验证项 |
 | 安装/配置主线 | 已补新版入口 | 优先看第 `2` 章和第 `11` 章 |
 | 媒体/创意能力 | 已补 `infer` / `video_generate` / `music_generate` / `ComfyUI` 主线 | 优先看第 `10` 章和第 `14` 章 |
 | 旧 Skill 生态 | 仍有历史内容残留 | 先 `search/info` 验证，再决定是否安装 |
 
-> ⚠️ **一句话判断**：如果你看到 `local-anthropic`、`local-google`、`bananapro-image-gen`、`video-agent`、整串 `clawhub install ...`，请先把它理解为“历史参考”，不要默认当成 `2026.4+` 官方推荐步骤。
+> ⚠️ **一句话判断**：如果你看到 `local-anthropic`、`local-google`、`bananapro-image-gen`、`video-agent`、整串 `clawhub install ...`，请先把它理解为“历史参考”，不要默认当成 `2026.6+` 官方推荐步骤。
 
 ---
 
@@ -43,15 +54,15 @@
 
 | 你的情况 | 推荐方案 | 为什么 | 开始时间 |
 |---------|---------|------|---------|
-| **完全小白，想最快体验** | [**飞书妙搭**](Openclaw史上最简单教程，小白一键部署.md#1飞书妙搭-openclaw--强烈推荐) ⭐ | **免费** + **1分钟完成** + **每日100万Tokens** | → 立即开始 |
-| **有服务器，想可视化管理** | [**宝塔面板**](Openclaw史上最简单教程，小白一键部署.md#11宝塔面板-openclaw) | **免费插件** + **面板管理** + **一键安装** | → 3分钟搞定 |
-| **企业级，需要高安全性** | [**JVSClaw**](Openclaw史上最简单教程，小白一键部署.md#10jvsclaw阿里云无影) | **14天免费** + **6核12GB** + **端到端加密** | → 需邀请码 |
-| **想用浏览器操控** | [Kimi Claw](Openclaw史上最简单教程，小白一键部署.md#3kimi-openclaw) | **Kimi K2.5** + **浏览器控制** | → 200元/月 |
-| **量化交易/多IM** | [腾讯 WorkBuddy](Openclaw史上最简单教程，小白一键部署.md#4腾讯-openclawworkbuddy) | **桌面端Agent** + **多IM支持** | → 送5000积分 |
-| **macOS原生体验** | [QClaw](Openclaw史上最简单教程，小白一键部署.md#5qclaw) | **腾讯官方桌面客户端** + **全量公测** | → 免费 |
-| **Agent生态丰富** | [扣子 OpenClaw](Openclaw史上最简单教程，小白一键部署.md#2扣子-openclaw) | **1800+Skills** | → 99元/月起 |
+| **完全小白，想最快体验** | [**飞书妙搭**](tutorials/Openclaw史上最简单教程，小白一键部署.md#1飞书妙搭-openclaw--强烈推荐) ⭐ | **免费** + **1分钟完成** + **每日100万Tokens** | → 立即开始 |
+| **有服务器，想可视化管理** | [**宝塔面板**](tutorials/Openclaw史上最简单教程，小白一键部署.md#11宝塔面板-openclaw) | **免费插件** + **面板管理** + **一键安装** | → 3分钟搞定 |
+| **企业级，需要高安全性** | [**JVSClaw**](tutorials/Openclaw史上最简单教程，小白一键部署.md#10jvsclaw阿里云无影) | **14天免费** + **6核12GB** + **端到端加密** | → 需邀请码 |
+| **想用浏览器操控** | [Kimi Claw](tutorials/Openclaw史上最简单教程，小白一键部署.md#3kimi-openclaw) | **Kimi K2.5** + **浏览器控制** | → 200元/月 |
+| **量化交易/多IM** | [腾讯 WorkBuddy](tutorials/Openclaw史上最简单教程，小白一键部署.md#4腾讯-openclawworkbuddy) | **桌面端Agent** + **多IM支持** | → 送5000积分 |
+| **macOS原生体验** | [QClaw](tutorials/Openclaw史上最简单教程，小白一键部署.md#5qclaw) | **腾讯官方桌面客户端** + **全量公测** | → 免费 |
+| **Agent生态丰富** | [扣子 OpenClaw](tutorials/Openclaw史上最简单教程，小白一键部署.md#2扣子-openclaw) | **1800+Skills** | → 99元/月起 |
 
-📖 **[查看完整一键部署教程 →](Openclaw史上最简单教程，小白一键部署.md)**
+📖 **[查看完整一键部署教程 →](tutorials/Openclaw史上最简单教程，小白一键部署.md)**
 
 ---
 
@@ -186,34 +197,38 @@ openclaw gateway restart
 
 ---
 
-### 🆕 v2026.4.14 稳定版更新（2026年4月14日）
+### 🆕 v2026.6.8 稳定版更新（2026年6月16日）
 
 **当前基线**
-- **稳定版**：`v2026.4.14`
-- **预发布参考**：`v2026.4.15-beta.1`（2026年4月15日）
-- **推荐运行时**：`Node 24`；如继续走兼容路径，建议至少 `Node 22.16+`
+- **稳定版**：`v2026.6.8`
+- **推荐运行时**：`Node 24`；如继续走兼容路径，建议至少 `Node 22.19+`
+- **校验方式**：`npm view openclaw version` 应返回 `2026.6.8`
 
-**2026.4 主线变化**
+**2026.6 主线变化**
 - **Active Memory**：已进入稳定主线，回复前主动拉取相关偏好、上下文和历史细节
 - **Dreaming + Memory Wiki**：长期记忆、结构化 `claim/evidence`、矛盾/新鲜度管理成为主线能力
 - **Task Flow + Webhooks**：自动化从“定时任务”升级到“持久化流程 + 外部事件触发”
 - **`openclaw infer`**：统一 `model / image / audio / tts / video / web / embedding` CLI 入口
 - **内建媒体能力**：官方 `video_generate` / `music_generate` 与 `ComfyUI` provider/plugin 已可直接使用
-- **模型与 provider 修复**：`v2026.4.12` 到 `v2026.4.14` 集中修复了 Codex、Ollama、embedding、媒体、SSRF 与 UI 等一批兼容问题
+- **多渠道消息更稳**：Telegram 富文本、表格、列表、折叠引用、换行和 CLI-backed replies 更可靠，WhatsApp 支持已配置 ACP 绑定
+- **模型目录更新**：新增 GLM-5.2、Claude Haiku 4.5 等模型目录支持，并强化 provider ID 规范化和 SecretRef 认证
+- **`/usage` footer**：用量信息支持统一 footer 渲染、默认模板和小数格式化，坏模板会给出警告
+- **Web 搜索默认更可控**：Parallel Free、DuckDuckGo、Ollama、Codex Hosted Search 等 key-free provider 保持显式 opt-in，避免意外 fallback
 
 **升级命令**：
 ```bash
-npm install -g openclaw@2026.4.14
-openclaw --version  # 确认版本为 2026.4.14
+openclaw update --tag 2026.6.8 --yes
+openclaw update repair
+openclaw --version  # 确认版本为 2026.6.8
 ```
 
-> ⚠️ **新手建议**：如果你的目标是“按教程稳定跑通”，优先使用 `v2026.4.14`。`v2026.4.15-beta.1` 适合尝鲜验证，不建议直接作为默认教程基线。
+> ⚠️ **新手建议**：如果你的目标是“按教程稳定跑通”，优先使用 `v2026.6.8`；如果 `openclaw update` 在本机失败，再用 `npm install -g openclaw@2026.6.8 --force` 兜底。升级后先跑 `openclaw doctor`、`openclaw models status --probe` 和 `openclaw channels status`。
 
 ---
 
 ## 📖 纸质书：《OpenClaw超级个体实操手册》
 
-⚠️ **当前说明**：开源教程的第 `10~15` 章已按 `v2026.4.14` 主线重写；纸质书仍然是更系统的重写版，适合需要完整、稳定、逐条验证内容的读者。
+⚠️ **当前说明**：开源教程的第 `1/2/5/8/10~15` 章已按 `v2026.6.8` 主线修订；纸质书仍然是更系统的重写版，适合需要完整、稳定、逐条验证内容的读者。
 
 **纸质书已全面修正，现已上市！**
 
@@ -353,10 +368,11 @@ openclaw --version  # 确认版本为 2026.4.14
 
 ## 📈 项目进度
 
-- ✅ **v1.6**（2026-03-18）：新增一键部署教程（8个平台）
+- ✅ **v1.11**（2026-06-18）：同步 OpenClaw `v2026.6.8` 稳定版，更新安装升级命令、版本基线、模型/渠道/usage/search 说明
 - ✅ **v1.10**（2026-04-16）：第 `10~15` 章按 OpenClaw `v2026.4.14` 稳定版主线重写，并同步 README / 章节入口 / 纸书推荐文案
 - ✅ **v1.9**（2026-04-04）：同步橙皮书 v1.3~v1.4 更新——新增微信ClawBot、腾讯全家桶、浏览器渠道、GLM-5-Turbo、安全漏洞统计
-- 🔄 **v1.11**（进行中）：继续清理第 `1~9` 章旧口径与历史案例
+- ✅ **v1.6**（2026-03-18）：新增一键部署教程（8个平台）
+- 🔄 **v1.12**（进行中）：继续清理第 `1~9` 章旧截图、旧渠道和历史案例
 
 ---
 
@@ -378,10 +394,10 @@ openclaw --version  # 确认版本为 2026.4.14
 
 <div align="center">
 
-**最后更新**：2026年4月4日
-**教程版本**：v1.9
+**最后更新**：2026年6月18日
+**教程版本**：v1.11
 **总字数**：408,000字（15章节 + 15附录）
-**适用OpenClaw版本**：2026.4.11（稳定版） / 2026.4.12-beta.1（预发布参考）
+**适用OpenClaw版本**：2026.6.8（稳定版）
 
 🎉 **教程已完成 | 支持续优化 | 完全免费** 🎉
 🚀 **一个人 + OpenClaw = 无限可能** 🚀

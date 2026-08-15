@@ -5,37 +5,31 @@
 
 ---
 
-## 📂 根目录文件（20个）
+## 📂 根目录文件（整理后）
 
 ### 主要文档
 1. ✅ README.md - 项目主文档
 2. ✅ index.md - 索引文件
 3. ✅ LEARNING-PATH.md - 学习路径
-4. ✅ PROJECT-SUMMARY.md - 项目总结
-5. ✅ CHANGELOG.md - 更新日志
-6. ✅ search.md - 搜索说明
+4. ✅ search.md - 搜索说明
 
-### 状态文档
-7. ✅ PROGRESS.md - 进度记录
-8. ✅ OPTIMIZATION-PROGRESS.md - 优化进度
-9. ✅ IMPROVEMENTS-SUMMARY.md - 改进总结
-10. ✅ FINAL-CHAPTERS-UPDATE-SUMMARY.md - 最终章节更新总结
-11. ✅ FINAL-STATUS-2026-03-16.md - 最终状态
-12. ✅ UPDATE-SUMMARY-2026-03-16.md - 更新总结
-13. ✅ LINKS-VALIDATION-REPORT.md - 链接验证报告
+### 报告文档
+5. ✅ reports/PROJECT-SUMMARY.md - 项目总结
+6. ✅ reports/CHANGELOG.md - 更新日志
+7. ✅ reports/PROGRESS.md - 进度记录
+8. ✅ reports/OPTIMIZATION-PROGRESS.md - 优化进度
+9. ✅ reports/IMPROVEMENTS-SUMMARY.md - 改进总结
+10. ✅ reports/FINAL-CHAPTERS-UPDATE-SUMMARY.md - 最终章节更新总结
+11. ✅ reports/FINAL-STATUS-2026-03-16.md - 最终状态
+12. ✅ reports/UPDATE-SUMMARY-2026-03-16.md - 更新总结
+13. ✅ reports/LINKS-VALIDATION-REPORT.md - 链接验证报告
 
 ### 发布相关
-14. ✅ 公众号文章-2026年3月更新.md
-15. ✅ 附录发布准备完成.md
-16. ✅ 附录发布分步指南.md
-17. ✅ APPENDIX_PUBLISH_CHECKLIST.md
-18. ✅ CSDN-Cookie获取教程.md
-19. ✅ CSDN快速发布指南.md
-20. ✅ CSDN自动发文完整指南.md
-21. ✅ CSDN附录发布完整指南.md
+14. ✅ reports/APPENDIX_PUBLISH_CHECKLIST.md
+15. ✅ tutorials/CSDN-Cookie获取教程.md
 
 ### 工具文档
-22. ✅ COST-CALCULATOR.md - 成本计算器
+16. ✅ tutorials/COST-CALCULATOR.md - 成本计算器
 
 ---
 

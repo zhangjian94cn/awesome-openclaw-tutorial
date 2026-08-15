@@ -4,7 +4,7 @@
 
 > 本章节将手把手教你安装 OpenClaw。
 
-> ⚠️ **当前基线**：截至 **2026-04-16**，本教程推荐使用 **OpenClaw v2026.4.14（稳定版）**；`v2026.4.15-beta.1` 仅作为预发布参考。运行时优先使用 **Node 24**。
+> ⚠️ **当前基线**：截至 **2026-06-18**，本教程推荐使用 **OpenClaw v2026.6.8（稳定版，2026-06-16 发布）**。运行时优先使用 **Node 24**；如果自行管理 Node，至少使用 **Node 22.19+**。
 
 ![OpenClaw 安装界面](https://upload.maynor1024.live/file/1771085321300_installation-interface.png)
 
@@ -145,7 +145,7 @@ curl -fsSL https://openclaw.ai/install.sh | bash
 ```bash
 openclaw --version
 ```
-如果显示版本号（如 `2026.4.11`），说明安装成功！
+如果显示版本号（如 `2026.6.8`），说明安装成功！
 
 #### 第四步：初始化配置
 
@@ -746,7 +746,7 @@ openclaw onboard
    openclaw --version
    ```
    
-   如果显示版本号（如 `2026.4.11`），说明OpenClaw已预装成功。
+   如果显示版本号（如 `2026.6.8`），说明OpenClaw已预装成功。
 
 ![OpenClaw镜像](https://upload.maynor1024.live/file/1770742213992_02-openclaw-image.png)
 
@@ -2257,8 +2257,8 @@ openclaw gateway status
 # 查看资源使用
 openclaw stats
 
-# 查看 API 消耗
-openclaw stats api
+# 查看 API 消耗和额度
+openclaw status --usage
 ```
 
 ### 故障排查
@@ -3123,634 +3123,215 @@ openclaw config set gateway.port 18790
 
 ## 2.X 版本升级指南
 
-> 🔄 **保支持最新**：定期升级OpenClaw以获得新功能、性能优化和安全修复。
+> 🔄 **保持最新**：OpenClaw 迭代很快，升级通常会带来安全修复、provider 兼容性修复、渠道稳定性改进和新模型目录。
 
-> ⚠️ **重要提示**：目前推荐使用 **2026.4.14（稳定版）**。如果你只是想稳定跑通本教程，请不要直接把 `v2026.4.15-beta.1` 当默认基线。
-
-> 📝 **历史问题版本**：`2026.2.12` 存在已知 bug（[Issue #15141](https://github.com/openclaw/openclaw/issues/15141)），会导致 heartbeat 和消息处理功能异常。
+> ⚠️ **当前推荐版本**：截至 **2026-06-18**，本教程推荐使用 **OpenClaw 2026.6.8（稳定版）**。升级前先备份 `~/.openclaw`；升级后先运行 `openclaw update repair`、`openclaw doctor` 和状态检查。
 
 ### 推荐版本
 
-**当前推荐版本**：2026.4.11
+**当前推荐版本**：`2026.6.8`
 
-**已知访问题版本**：
-- ❌ 2026.2.12：Session 路径验证 bug，影响 heartbeat 和 Telegram/飞书消息处理
-
-### 为什么要升级？
-
-OpenClaw支持续迭代更新，升级可以获得：
-- ✅ 新功能和改进
-- ✅ 性能优化
-- ✅ 安全修复
-- ✅ Bug修复
-- ✅ 更好的兼内容性
-
-### 检查当前版本
+**版本确认命令**：
 
 ```bash
-# 查看当前版本
+npm view openclaw version
 openclaw --version
-
-# 查看配置文件版本
-cat ~/.openclaw/openclaw.json | grep version
-```
-如果配置文件版本比当前版本新，说明需要升级。
-
-### 升级方式选择
-
-根据你的安装方式选择对应的升级方法：
-
-| 安装方式 | 升级方法 | 难度 | 推荐度 |
-|---------|---------|------|--------|
-| 云端部署 | 重新部署镜像 | ⭐ | ⭐⭐⭐⭐⭐ |
-| Docker | 拉取新镜像 | ⭐⭐ | ⭐⭐⭐⭐⭐ |
-| 本地安装（npm） | npm升级 | ⭐⭐⭐ | ⭐⭐⭐⭐ |
-| 本地安装（源码） | git pull | ⭐⭐⭐⭐ | ⭐⭐⭐ |
-
-### 方式一：npm直接升级（推荐）
-
-这是最可靠的升级方式，适用于通过npm安装的用户。
-
-#### 升级步骤
-
-**第一步：备份配置**
-
-```bash
-# 备份整个配置目附录
-cp -r ~/.openclaw ~/.openclaw.backup-$(date +%Y%m%d)
-
-# 验证备份
-ls -la ~/.openclaw.backup-*
 ```
 
-**第二步：停止Gateway服务**
+如果 `npm view openclaw version` 显示 `2026.6.8` 或更高版本，而你本机 `openclaw --version` 更低，就可以考虑升级。
+
+### 升级前必做
 
 ```bash
-# 停止Gateway
-openclaw gateway stop
+# 1) 备份配置和本地状态
+cp -r ~/.openclaw ~/.openclaw.backup-$(date +%Y%m%d-%H%M%S)
 
-# 验证已停止
+# 2) 记录当前版本
+openclaw --version > ~/openclaw-version-before-upgrade.txt
+
+# 3) 检查当前服务状态
 openclaw gateway status
-```
-
-**第三步：卸载旧版本**
-
-```bash
-# 卸载旧版本
-npm uninstall -g openclaw
-
-# 验证卸载
-which openclaw  # 应该没有输出
-```
-
-**第四步：安装新版本**
-
-```bash
-# 安装推荐版本 2026.4.11（需要使用--force参数）
-npm install -g openclaw@2026.4.11 --force
-```
-> ⚠️ **版本选择说明**：  
-> - 教程默认按 `2026.4.11` 稳定版编写
-> - `2026.4.12-beta.1` 是预发布版，适合尝鲜和验证新能力
-> - 如果你只想稳定跑通教程，优先使用稳定版，不要把 beta 当默认基线
-
-> ⚠️ **为什么需要--force？**  
-> npm会检测到已存在的文件，使用`--force`强制覆盖。
-
-**第五步：修复配置**
-
-```bash
-# 运行doctor工具自动修复配置
-openclaw doctor --fix
-```
-doctor工具会自动：
-- 更新Gateway服务入口点路径
-- 检查配置兼内容性
-- 修复已知访问题
-- 重新安装LaunchAgent（macOS）或systemd服务（Linux）
-
-**第六步：重启Gateway**
-
-```bash
-# 重启Gateway
-openclaw gateway restart
-
-# 等待几秒后检查状态
-sleep 5
-openclaw gateway status
-```
-
-**第七步：验证升级**
-
-```bash
-# 检查版本
-openclaw --version
-
-# 检查Gateway状态
-openclaw gateway status
-
-# 测试连接
 openclaw channels status
 ```
-成功的输出应该显示：
-```
-2026.4.11
 
-Runtime: running (pid xxxxx, state active)
-RPC probe: ok
-Listening: *:18789
-Dashboard: http://127.0.0.1:18789/
-```
+> 不要跳过备份。OpenClaw 的配置、凭据引用、会话、插件状态都可能保存在 `~/.openclaw` 下。
 
-#### 升级示例
+### 方式一：使用 `openclaw update`（推荐）
 
-以下是一次真实的升级过程：
-
-![升级前版本检查](https://upload.maynor1024.live/file/1770948331093_image-20260213100521296.png)
-
-*图：升级前版本检查，配置文件版本(2026.2.6-3)比当前版本(2026.2.1-zh.3)新*
-
-![npm安装过程](https://upload.maynor1024.live/file/1770948229689_image-20260213100338055.png)
-
-*图：使用npm install --force安装新版本*
-
-![升级完成验证](https://upload.maynor1024.live/file/1770949103492_image-20260213101814142.png)
-
-*图：升级完成，版本更新到2026.4.11*
-
-### 方式二：官方脚本升级
-
-使用官方提供的一键升级脚本。
+`openclaw update` 是 2026.6 CLI 的统一升级入口。全局 npm 安装会通过检测到的包管理器更新；source checkout 会走 git 更新、依赖安装、构建和 doctor 流程。
 
 ```bash
-# 运行升级脚本
+# 预览升级动作，不真正写入
+openclaw update --tag 2026.6.8 --dry-run
+
+# 升级到教程推荐版本
+openclaw update --tag 2026.6.8 --yes
+
+# 如果你想直接跟随稳定频道
+openclaw update --channel stable --yes
+```
+
+升级完成后：
+
+```bash
+openclaw update repair
+openclaw doctor
+openclaw gateway restart
+openclaw --version
+openclaw gateway status
+openclaw channels status
+```
+
+### 方式二：npm 固定版本安装（兜底）
+
+如果 `openclaw update` 在你的环境里失败，或者你明确知道自己是 npm 全局安装，可以用固定版本覆盖安装。
+
+```bash
+# 停止 Gateway
+openclaw gateway stop
+
+# 安装推荐版本
+npm install -g openclaw@2026.6.8 --force
+
+# 修复更新后的插件/配置收敛状态
+openclaw update repair
+openclaw doctor
+
+# 重启并验证
+openclaw gateway restart
+openclaw --version
+openclaw gateway status
+openclaw channels status
+```
+
+如果你不想固定版本，也可以使用：
+
+```bash
+npm install -g openclaw@latest
+```
+
+### 方式三：官方安装脚本
+
+如果你是首次安装，或希望安装器自动处理 Node、路径和 onboarding，可以继续使用官方脚本：
+
+```bash
 curl -fsSL https://openclaw.ai/install.sh | bash
 ```
 
-**优点**：
-- ✅ 一键完成
-- ✅ 自动处理依赖
-
-**缺点**：
-- ❌ 可能遇到npm错误
-- ❌ 不如方式一可靠
-
-**如果遇到错误**：
-- 切换到方式一（npm直接升级）
-- 或查看下文的故障排查
-
-### 方式三：Docker升级
-
-如果使用Docker部署，升级非常简单。
+如果只想安装 CLI、不立即跑 onboarding：
 
 ```bash
-# 停止并删除旧内容器
+curl -fsSL https://openclaw.ai/install.sh | bash -s -- --no-onboard
+```
+
+### 方式四：Docker / 云端部署
+
+Docker 部署通常按镜像更新：
+
+```bash
 docker compose down
-
-# 拉取最新镜像
 docker compose pull
+docker compose up -d
 
-# 启动新内容器
-docker compose up -d openclaw-cn-gateway
-
-# 查看日志
-docker compose logs -f openclaw-cn-gateway
+docker compose logs -f
 ```
 
-### 方式四：云端部署升级
+云端一键镜像、面板插件或第三方托管版本，需要进入对应控制台查看镜像版本。不要只看网页 UI 是否能打开，一定要确认后端 OpenClaw 版本。
 
-#### 腾讯云Lighthouse
+### 升级后验证清单
 
-1. 进入轻量应用服务器控制台
-2. 选择你的OpenClaw实例
-3. 点击"重置应用"
-4. 选择最新的OpenClaw镜像
-5. 等待重置完成
-6. 重新配置API（配置会保留）
-
-### 升级后的变化
-
-#### 配置文件自动迁移
-
-升级后，doctor工具会自动：
-- 更新配置文件格式
-- 迁移旧版本配置
-- 创建备份文件：`~/.openclaw/openclaw.json.bak`
-
-#### 服务管理改进
-
-**macOS**：
-- LaunchAgent自动重新安装
-- 服务路径更新为新版本
-- 日志位置：`~/.openclaw/logs/gateway.log`
-
-**Linux**：
-- systemd服务自动更新
-- 服务路径更新为新版本
-- 日志位置：`~/.openclaw/logs/gateway.log`
-
-#### 已知警告
-
-升级后可能看到一些警告，这些通常不影响使用：
-
-```
-Config warnings:
-- plugins.entries.feishu: plugin feishu: duplicate plugin id detected
-```
-
-**说明**：这是一个已知的插件重复警告，不影响正常使用。
-
-### 升级故障排查
-
-#### 访问题1：npm install报错EEXIST
-
-**症状**：
-```
-npm error code EEXIST
-npm error path /usr/local/bin/openclaw
-npm error EEXIST: file already exists
-```
-
-**解决方案**：
 ```bash
-# 使用--force参数强制覆盖
-npm install -g openclaw@2026.4.11 --force
+openclaw --version
+openclaw doctor
+openclaw gateway status
+openclaw channels status
+openclaw models status
+openclaw models status --probe
+openclaw skills check
 ```
 
-#### 访问题2：Gateway启动失败
+看到下面结果，才算升级基本完成：
 
-**症状**：
-```
-Gateway not running
-```
+- `openclaw --version` 返回 `2026.6.8` 或你指定的新版本
+- `openclaw doctor` 没有阻塞级错误
+- `openclaw gateway status` 显示 Gateway 正常运行
+- `openclaw channels status` 能看到你需要的渠道状态
+- `openclaw models status --probe` 没有明显认证失败
 
-**解决方案**：
+### 2026.6.8 升级后重点验证
+
+`v2026.6.8` 的重点不是“换一个版本号”，而是这些能力更稳了：
+
+- **Telegram / WhatsApp**：Telegram 富文本、表格、列表、折叠引用、换行和 CLI-backed replies 更可靠；WhatsApp 支持已配置 ACP 绑定
+- **模型目录**：GLM-5.2、Claude Haiku 4.5 等模型目录进入主线，provider ID 和 SecretRef 认证更规范
+- **`/usage` footer**：用量 footer、默认模板和格式化更稳定，坏模板会给警告
+- **Web 搜索默认策略**：Parallel Free、DuckDuckGo、Ollama、Codex Hosted Search 等 key-free provider 需要显式 opt-in
+
+建议升级后至少做这 4 个 smoke test：
+
 ```bash
-# 运行doctor修复
-openclaw doctor --fix
+openclaw infer model run --prompt "Reply with exactly: smoke-ok" --json
+openclaw infer web search --query "OpenClaw v2026.6.8 release notes" --json
+openclaw models status --probe
+openclaw gateway status
+```
 
-# 重启Gateway
+### 常见升级问题
+
+#### npm 报 EEXIST
+
+```bash
+npm install -g openclaw@2026.6.8 --force
+```
+
+#### Gateway 启动失败
+
+```bash
+openclaw update repair
+openclaw doctor
 openclaw gateway restart
-
-# 查看详细日志
 tail -f ~/.openclaw/logs/gateway.log
 ```
 
-#### 访问题3：配置文件版本不匹配
+#### 配置由更高版本写入
 
-**症状**：
-```
-Config was last written by a newer OpenClaw (2026.2.6-3); 
-current version is 2026.2.1-zh.3
-```
+这通常说明你正在用旧 CLI 读取新配置。先升级 CLI，再运行 repair 和 doctor：
 
-**解决方案**：
 ```bash
-# 升级到推荐版本 2026.4.11
-npm install -g openclaw@2026.4.11 --force
-openclaw doctor --fix
+npm install -g openclaw@2026.6.8 --force
+openclaw update repair
+openclaw doctor
 ```
 
-#### 访问题4：插件加载失败
+#### 端口被占用
 
-**症状**：
-```
-plugin not found: xxx
-```
-
-**解决方案**：
 ```bash
-# 重新安装插件
-openclaw plugins install <plugin-name>
-
-# 或禁用有访问题的插件
-openclaw config set plugins.allow []
-```
-
-#### 访问题5：端口被占用
-
-**症状**：
-```
-Error: listen EADDRINUSE: address already in use :::18789
-```
-
-**解决方案**：
-```bash
-# 查找占用端口的进程
 lsof -i :18789
-
-# 停止旧的Gateway进程
 kill -9 <PID>
 
-# 或修改端口
+# 或换端口
 openclaw config set gateway.port 18790
 openclaw gateway restart
 ```
 
-### 回滚到旧版本
+### 回滚建议
 
-如果升级后遇到访问题，可以回滚到旧版本。
-
-#### 方式一：从备份恢复
+回滚可能导致新版本写入的配置无法被旧版本识别，所以只在确实无法恢复时使用。优先从备份恢复配置，再安装目标版本。
 
 ```bash
-# 停止Gateway
 openclaw gateway stop
-
-# 恢复配置
-cp -r ~/.openclaw.backup-20260213/* ~/.openclaw/
-
-# 降级到旧版本（以中文版为例）
-npm uninstall -g openclaw
-npm install -g @qingchencloud/openclaw-zh@2026.2.1-zh.3 --force
-
-# 重启Gateway
+cp -r ~/.openclaw.backup-YYYYMMDD-HHMMSS/* ~/.openclaw/
+npm install -g openclaw@<target-version> --force
+openclaw doctor
 openclaw gateway restart
 ```
 
-#### 方式二：安装指定版本
-
-```bash
-# 查看可用版本
-npm view openclaw versions
-
-# 安装指定版本
-npm install -g openclaw@2026.2.8 --force
-
-# 修复配置
-openclaw doctor --fix
-
-# 重启Gateway
-openclaw gateway restart
-```
-
-### 升级最佳实践
-
-#### 升级前必做
-
-1. **备份配置**：
-   ```bash
-   cp -r ~/.openclaw ~/.openclaw.backup-$(date +%Y%m%d)
-   ```
-
-2. **记附录当前版本**：
-   ```bash
-   openclaw --version > ~/openclaw-version-before-upgrade.txt
-   ```
-
-3. **导出重要配置**：
-   ```bash
-   openclaw config get > ~/openclaw-config-backup.json
-   ```
-
-4. **检查磁盘空间**：
-   ```bash
-   df -h ~
-   ```
-
-#### 升级时注意
-
-1. **使用--force参数**：
-   ```bash
-   npm install -g openclaw@2026.4.11 --force
-   ```
-
-2. **运行doctor修复**：
-   ```bash
-   openclaw doctor --fix
-   ```
-
-3. **检查Gateway状态**：
-   ```bash
-   openclaw gateway status
-   ```
-
-4. **查看日志**：
-   ```bash
-   tail -f ~/.openclaw/logs/gateway.log
-   ```
-
-#### 升级后验证
-
-1. **检查版本号**：
-   ```bash
-   openclaw --version
-   ```
-
-2. **测试Gateway连接**：
-   ```bash
-   openclaw channels status
-   ```
-
-3. **验证插件功能**：
-   ```bash
-   openclaw plugins list
-   ```
-
-4. **测试频道连接**：
-   - 发布送测试消息
-   - 验证AI回复
-   - 检查Skills功能
-
-5. **检查API消耗**：
-   ```bash
-   openclaw stats api
-   ```
-
-### 已知访问题版本警告
-
-#### 2026.2.12 版本访问题
-
-**不推荐使用 2026.2.12 版本**，该版本存在严重 bug：
-
-**访问题描述**：
-- Session 文件路径验证逻辑错误
-- 导致 heartbeat 功能失败
-- 导致 Telegram/飞书消息处理异常
-- 错误信息：`Session file path must be within sessions directory`
-
-**影响范围**：
-- ❌ Heartbeat 功能完全不可用
-- ❌ Telegram bot 无法响应消息
-- ❌ 飞书 bot 可能无法正常回复
-- ✅ 网页版不受影响
-
-**官方 Issue**：
-- [Issue #15141](https://github.com/openclaw/openclaw/issues/15141)
-- 状态：已确认，等待修复
-
-**解决方案**：
-1. **不要升级到 2026.2.12**
-2. **如果已升级，回退到 2026.4.11**：
-   ```bash
-   openclaw gateway stop
-   npm uninstall -g openclaw
-   npm install -g openclaw@2026.4.11 --force
-   openclaw doctor --fix
-   openclaw gateway restart
-   ```
-
-**推荐做法**：
-- 使用 2026.4.11 版本（当前最稳定）
-- 等待 2026.2.13+ 版本修复后再升级
-- 关注官方 GitHub Issues 获取最新信息
-
----
-
-### 升级时间建议
-
-**推荐升级时机**：
-- 🌙 晚上或周末（使用量低）
-- 📅 每月检查一次更新
-- 🐛 发布现Bug时及时升级
-- 🔒 安全更新立即升级
-
-**不推荐升级时机**：
-- ❌ 工作日高峰期
-- ❌ 重要任务进行中
-- ❌ 网络不稳定时
-- ❌ 没有备份时
-
-### 自动更新（可选）
-
-如果想自动检查更新，可以设置定时任务。
-
-**macOS/Linux**：
-```bash
-# 编辑crontab
-crontab -e
-
-# 添加每周检查更新（周日凌晨2点）
-0 2 * * 0 /usr/local/bin/openclaw doctor --check-updates
-```
-
-**Windows**：
-使用任务计划程序创建定时任务。
-
-### 版本发布布说明
-
-查看每个版本的更新内内容：
-
-```bash
-# 访问GitHub发布布页面
-https://github.com/openclaw/openclaw/releases
-
-# 或使用命令行
-curl -s https://api.github.com/repos/openclaw/openclaw/releases/latest
-```
-
-### 升级成本估算
-
-| 升级方式 | 时间成本 | 风险等级 | 推荐度 |
-|---------|---------|---------|--------|
-| npm直接升级 | 5-10分钟 | 低 | ⭐⭐⭐⭐⭐ |
-| 官方脚本 | 3-5分钟 | 中 | ⭐⭐⭐⭐ |
-| Docker | 2-3分钟 | 低 | ⭐⭐⭐⭐⭐ |
-| 云端重置 | 5-10分钟 | 中 | ⭐⭐⭐ |
-
-### 升级检查清单
-
-升级前：
-- [ ] 备份配置目附录
-- [ ] 记附录当前版本
-- [ ] 检查磁盘空间
-- [ ] 选择合适的升级时间
-
-升级中：
-- [ ] 停止Gateway服务
-- [ ] 卸载旧版本
-- [ ] 安装新版本（使用--force）
-- [ ] 运行doctor修复
-- [ ] 重启Gateway
-
-升级后：
-- [ ] 验证版本号
-- [ ] 测试Gateway连接
-- [ ] 验证插件功能
-- [ ] 测试频道连接
-- [ ] 检查日志无错误
-
-### 升级支持
-
-如果升级遇到访问题：
-
-1. **查看日志**：
-   ```bash
-   tail -f ~/.openclaw/logs/gateway.log
-   ```
-
-2. **运行诊断**：
-   ```bash
-   openclaw doctor
-   ```
-
-3. **查看官方文档**：
-   ```
-   https://docs.openclaw.ai/
-   ```
-
-4. **加入社区**：
-   - GitHub Issues
-   - Discord社区
-   - 飞书群组
-
-### 升级案例：2026.2.1-zh.3 → 2026.4.11
-
-以下是一次真实的升级案例，供参考。
-
-**升级背景**：
-- 原版本：2026.2.1-zh.3（中文版）
-- 目标版本：2026.4.11（推荐稳定版）
-- 升级原因：获取新功能和性能优化
-
-**升级过程**：
-
-1. **备份配置**：
-   ```bash
-   cp -r ~/.openclaw ~/.openclaw.backup-20260213
-   ```
-
-2. **停止Gateway**：
-   ```bash
-   openclaw gateway stop
-   ```
-
-3. **卸载旧版本**：
-   ```bash
-   npm uninstall -g openclaw
-   ```
-
-4. **安装新版本**：
-   ```bash
-   npm install -g openclaw@2026.4.11 --force
-   ```
-
-5. **修复配置**：
-   ```bash
-   openclaw doctor --fix
-   ```
-
-6. **重启Gateway**：
-   ```bash
-   openclaw gateway restart
-   ```
-
-7. **验证升级**：
-   ```bash
-   openclaw --version  # 显示：2026.4.11
-   openclaw gateway status  # 显示：running
-   ```
-
-**升级结果**：
-- ✅ 升级成功
-- ✅ 配置自动迁移
-- ✅ Gateway运行正常
-- ✅ 所有功能正常
-
-**遇到的访问题**：
-- npm install报错EEXIST → 使用--force解决
-
-**总耗时**：约5分钟
+### 升级节奏建议
+
+- 普通用户：每月检查一次 `npm view openclaw version`
+- 生产环境：先在测试机升级，跑完 smoke test 再动主环境
+- 安全修复或渠道故障修复：优先升级
+- 正在跑重要自动化时：先暂停任务、备份，再升级
 
 ---
 

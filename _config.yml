@@ -68,6 +68,8 @@ include:
   - index.md
   - docs
   - appendix
+  - tutorials
+  - reports
 
 # Exclude from processing
 exclude:
@@ -76,6 +78,9 @@ exclude:
   - .claude
   - .vscode
   - .github
+  - archive
+  - data
+  - tools
   - backups
   - scripts
   - Gemfile
@@ -132,9 +137,7 @@ exclude:
   - FINAL-OPTIMIZATION-SUMMARY.md
   - FINAL-SUMMARY.md
   - FIXES-README.md
-  - IMPROVEMENTS-SUMMARY.md
   - LIST-STYLE-ISSUES-REPORT.md
-  - OPTIMIZATION-PROGRESS.md
   - SECTION-NUMBERING-FIXED.md
   - SECTION-NUMBERING-ISSUES.md
   - SKILLS-CLEANUP-COMPLETED.md
@@ -142,8 +145,6 @@ exclude:
   - SKILLS-VERIFICATION-RESULTS.md
   - TSINGHUA-PRESS-COMPLIANCE-CHECK.md
   - WORK-COMPLETED.md
-  - PROGRESS.md
-  - PROJECT-SUMMARY.md
   - ANTIGRAVITY-MANAGER-REMOVED.md
   - demo.md
   - search-index.json
